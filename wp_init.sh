@@ -5,6 +5,10 @@ echo "================================================================="
 echo "Let's go"
 echo "================================================================="
 
+# accept the name of our website
+echo "Site Name: "
+read -e sitename
+
 # accept user input for site url
 echo "Site url: "
 read -e wpurl
@@ -14,12 +18,16 @@ echo "User name: "
 read -e wpuser
 
 # accept user input for the databse name
+echo "Database User: "
+read -e dbuser
+
+# accept user input for the databse name
 echo "Database Name: "
 read -e dbname
 
-# accept the name of our website
-echo "Site Name: "
-read -e sitename
+# accept user input for the databse name
+echo "Database Password: "
+read -e dbpass
 
 # accept a comma separated list of pages
 echo "Discurage searchengines (0 - yes, 1 - no): "
@@ -42,7 +50,7 @@ else
 wp core download
 
 # create the wp-config file with our standard setup
-wp core config --dbname=$dbname --dbuser=root --dbpass=root --extra-php <<PHP
+wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --extra-php <<PHP
 define( 'WP_DEBUG', true );
 define( 'DISALLOW_FILE_EDIT', true );
 PHP
