@@ -14,8 +14,11 @@ echo "Site url: "
 read -e wpurl
 
 # accept user input for user name
-echo "User name: "
+echo "Admin name: "
 read -e wpuser
+
+echo "Admin email: "
+read -e wpemail
 
 # accept user input for the databse name
 echo "Database User: "
@@ -27,7 +30,7 @@ read -e dbname
 
 # accept user input for the databse name
 echo "Database Password: "
-read -e dbpass
+read -s dbpass
 
 # accept a comma separated list of pages
 echo "Discurage searchengines (0 - yes, 1 - no): "
@@ -49,8 +52,10 @@ else
 # download the WordPress core files
 wp core download
 
+rand_char=$(LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | head -c 5)
+
 # create the wp-config file with our standard setup
-wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --extra-php <<PHP
+wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --locale=en_US --dbprefix="wp_$rand_char_" --extra-php <<PHP
 define( 'WP_DEBUG', true );
 define( 'DISALLOW_FILE_EDIT', true );
 PHP
@@ -62,11 +67,11 @@ currentdirectory=${PWD##*/}
 password=$(LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | head -c 12)
 
 # copy password to clipboard
-echo $password | pbcopy
+#echo $password | pbcopy
 
 # create database, and install WordPress
 wp db create
-wp core install --url="http://$wpurl/$currentdirectory" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="user@example.org"
+wp core install --url="http://$wpurl/$currentdirectory" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
 
 # discourage search engines
 wp option update blog_public $discourage
