@@ -5,7 +5,7 @@ echo "================================================================="
 echo "Let's go"
 echo "================================================================="
 
-# accept the name of our website
+#accept the name of our website
 echo "Site Name: "
 read -e sitename
 
@@ -32,6 +32,10 @@ read -e dbname
 echo "Database Password: "
 read -s dbpass
 
+# accept user input for the databse name
+echo "Database Prefix: "
+read -e dbprefix
+
 # accept a comma separated list of pages
 echo "Discurage searchengines (0 - yes, 1 - no): "
 read -e discourage
@@ -44,6 +48,9 @@ read -e allpages
 echo "Run Install? (y/n)"
 read -e run
 
+
+
+
 # if the user didn't say no, then go ahead an install
 if [ "$run" == n ] ; then
 exit
@@ -52,54 +59,51 @@ else
 # download the WordPress core files
 wp core download
 
-rand_char=$(LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | head -c 5)
 
-# do not use the wp core config unless it works on PHP 7
-# 
 # create the wp-config file with our standard setup
-# wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --locale=en_US --dbprefix="wp_$rand_char_" --extra-php <<PHP
-# define( 'WP_DEBUG', true );
-# define( 'DISALLOW_FILE_EDIT', true );
-# PHP
-# 
+wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --locale=en_US --dbprefix=$dbprefix --dbhost=127.0.0.1 --extra-php <<PHP
+define( 'WP_DEBUG', true );
+define( 'DISALLOW_FILE_EDIT', true );
+PHP
+
 
 # START hand job
 #move the sample to real
-mv wp-config-sample.php wp-config.php
+# mv wp-config-sample.php wp-config.php
 
-#set database details with perl find and replace
-perl -pi -e "s/database_name_here/$dbname/g" wp-config.php
-perl -pi -e "s/username_here/$dbuser/g" wp-config.php
-perl -pi -e "s/password_here/$dbpass/g" wp-config.php
-perl -pi -e "s/wp_/wp_$rand_char_/g" wp-config.php
+# #set database details with perl find and replace
+# perl -pi -e "s/database_name_here/$dbname/g" wp-config.php
+# perl -pi -e "s/username_here/$dbuser/g" wp-config.php
+# perl -pi -e "s/password_here/$dbpass/g" wp-config.php
+# perl -pi -e "s/wp_/$dbprefix/g" wp-config.php
+# perl -pi -e "s/localhost/127.0.0.1/g" wp-config.php
 
-perl -pi -e "define( 'WP_DEBUG', true );" wp-config.php
-perl -pi -e "define( 'DISALLOW_FILE_EDIT', true );" wp-config.php
 
-#set WP salts
-perl -i -pe'
-  BEGIN {
-    @chars = ("a" .. "z", "A" .. "Z", 0 .. 9);
-    push @chars, split //, "!@#$%^&*()-_ []{}<>~\`+=,.;:/?|";
-    sub salt { join "", map $chars[ rand @chars ], 1 .. 64 }
-  }
-  s/put your unique phrase here/salt()/ge
-' wp-config.php
+
+# #set WP salts
+# perl -i -pe'
+#   BEGIN {
+#     @chars = ("a" .. "z", "A" .. "Z", 0 .. 9);
+#     push @chars, split //, "!@#$%^&*()-_ []{}<>~\`+=,.;:/?|";
+#     sub salt { join "", map $chars[ rand @chars ], 1 .. 64 }
+#   }
+#   s/put your unique phrase here/salt()/ge
+# ' wp-config.php
 
 # END - hand job
 
 # parse the current directory name
-currentdirectory=${PWD##*/}
+#currentdirectory=${PWD##*/}
 
 # generate random 12 character password
 password=$(LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | head -c 12)
 
-# copy password to clipboard
-#echo $password | pbcopy
+# create database
+# wp db create
 
-# create database, and install WordPress
-wp db create
-wp core install --url="http://$wpurl/$currentdirectory" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
+#install WordPress
+# wp core install --url="http://$wpurl/" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
+wp core install  --url="http://$wpurl/" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
 
 # discourage search engines
 wp option update blog_public $discourage
@@ -175,6 +179,9 @@ done
 # assign navigaiton to primary location
 wp menu location assign main-navigation primary
 
+# finally allow errors
+#perl -pi -e "s/'WP_DEBUG', false/'WP_DEBUG', true/g" wp-config.php
+
 clear
 
 echo "================================================================="
@@ -185,10 +192,5 @@ echo "Password: $password"
 echo ""
 echo "================================================================="
 
-# Open the new website with Google Chrome
-#/usr/bin/open -a "/Applications/Google Chrome.app" "http://localhost/$currentdirectory/wp-login.php"
-
-# Open the project in TextMate
-#/Applications/TextMate.app/Contents/Resources/mate /Applications/MAMP/htdocs/$currentdirectory/wp-content/themes/lt-theme
 
 fi
