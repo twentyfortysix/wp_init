@@ -54,11 +54,39 @@ wp core download
 
 rand_char=$(LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | head -c 5)
 
+# do not use the wp core config unless it works on PHP 7
+# 
 # create the wp-config file with our standard setup
-wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --locale=en_US --dbprefix="wp_$rand_char_" --extra-php <<PHP
-define( 'WP_DEBUG', true );
-define( 'DISALLOW_FILE_EDIT', true );
-PHP
+# wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --locale=en_US --dbprefix="wp_$rand_char_" --extra-php <<PHP
+# define( 'WP_DEBUG', true );
+# define( 'DISALLOW_FILE_EDIT', true );
+# PHP
+# 
+
+# START hand job
+#move the sample to real
+mv wp-config-sample.php wp-config.php
+
+#set database details with perl find and replace
+perl -pi -e "s/database_name_here/$dbname/g" wp-config.php
+perl -pi -e "s/username_here/$dbuser/g" wp-config.php
+perl -pi -e "s/password_here/$dbpass/g" wp-config.php
+perl -pi -e "s/wp_/wp_$rand_char_/g" wp-config.php
+
+perl -pi -e "define( 'WP_DEBUG', true );" wp-config.php
+perl -pi -e "define( 'DISALLOW_FILE_EDIT', true );" wp-config.php
+
+#set WP salts
+perl -i -pe'
+  BEGIN {
+    @chars = ("a" .. "z", "A" .. "Z", 0 .. 9);
+    push @chars, split //, "!@#$%^&*()-_ []{}<>~\`+=,.;:/?|";
+    sub salt { join "", map $chars[ rand @chars ], 1 .. 64 }
+  }
+  s/put your unique phrase here/salt()/ge
+' wp-config.php
+
+# END - hand job
 
 # parse the current directory name
 currentdirectory=${PWD##*/}
