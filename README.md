@@ -3,7 +3,7 @@ disable some unwanted stuff, install bucnh of plugins I use regurarily
 
 In terminal run:
 ```
-wget https://github.com/twentyfortysix/wp_init/blob/master/wp_init.sh
+wget https://raw.githubusercontent.com/twentyfortysix/wp_init/master/wp_init.sh
 chmod +x wp_init.sh
 ./wp_init.sh
 ```
