@@ -160,6 +160,7 @@ wget https://github.com/twentyfortysix/almond-milk/archive/master.zip
 unzip master.zip
 mv almond-milk-master/Almond-milk/ ./
 rm -R almond-milk-master/
+rm master.zip
 cd ../../
 
 
