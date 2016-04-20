@@ -161,14 +161,7 @@ unzip master.zip
 mv almond-milk-master/Almond-milk/ ./
 rm -R almond-milk-master/
 cd ../../
-wp theme activate Almond-milk
 
-#delete themes
-wp theme delete twentyfifteen
-wp theme delete twentysixteen
-wp theme delete twentyfourteen
-
-#install theme
 
 # install plugins
 wp plugin install timber-library --activate
@@ -187,8 +180,12 @@ wp plugin install wordfence
 wp plugin install w3-total-cache
 wp plugin install theme-test-drive
 
-# install the company starter theme
-#wp theme install ~/Documents/lt-theme.zip --activate
+wp theme activate Almond-milk
+
+#delete themes
+wp theme delete twentyfifteen
+wp theme delete twentysixteen
+wp theme delete twentyfourteen
 
 clear
 
