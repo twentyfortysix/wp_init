@@ -47,11 +47,11 @@ read -e allpages
 # DB location.. on macs the localhost has to be 127.0.0.1
 echo "DB location: Localhost - 1 or Mac os environment - 2"
 read -e environment
-if [environment == 1]
+if [$environment == 1]
 then
-	dhost = "localhost"
+	$dhost = "localhost"
 else
-	dhost = "127.0.0.1"
+	$dhost = "127.0.0.1"
 fi
 
 # add a simple yes/no confirmation before we proceed
