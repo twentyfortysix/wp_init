@@ -150,7 +150,7 @@ wp theme delete twentysixteen
 wp theme delete twentyfourteen
 
 #install theme
-wp theme install http://2046.cz/freestuff/Almond-milk.zip
+wp theme install https://github.com/twentyfortysix/almond-milk/archive/master.zip
 
 # install plugins
 wp plugin install timber-library --activate
