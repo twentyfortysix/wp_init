@@ -10,8 +10,8 @@ echo "Site Name: "
 read -e sitename
 
 # accept user input for site url
-# echo "Site url: "
-# read -e wpurl
+echo "Site url (example.com/wp): "
+read -e wpurl
 
 # accept user input for user name
 echo "Admin name: "
@@ -113,7 +113,7 @@ password=$(LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | 
 
 #install WordPress
 # wp core install --url="http://$wpurl/" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
-wp core install  --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
+wp core install  --url="http://$wpurl/" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
 
 # discourage search engines
 wp option update blog_public $discourage
