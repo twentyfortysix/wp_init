@@ -138,7 +138,8 @@ for page in $allpages; do
 done
 
 # set pretty urls
-wp rewrite structure '/%post_id%/%postname%/' --hard
+wp option update permalink_structure '/%post_id%/%postname%'
+#wp rewrite structure '/%post_id%/%postname%/' --hard
 wp rewrite flush --hard
 
 # delete all comments.

@@ -1,7 +1,8 @@
 WP-CLI script that interactively install Wordpress,
-Disable some unwanted stuff, install bucnh of plugins and resert the Wo to a normal working state.
+Disable some unwanted stuff, install bunch of plugins and resert the Wordpress to a normal working state.
 
-Make it more CMS like not blog like auto-disable all comments. Install CMS usefull plugins such as Timber, ACF, posts 2 post, wp-pagnavi, simple image sizes, w3tc, wordfence, etc.
+Make it more CMS like not blog like. 
+Auto-disable all comments. Install CMS usefull plugins such as Timber, ACF, Posts2post, WP-pagnavi, Simple image sizes, W3TC, Wordfence (see full list in script).
 
 Requirments:
 - SSH
