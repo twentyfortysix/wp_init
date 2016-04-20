@@ -1,5 +1,7 @@
 WP-CLI script that interactively install Wordpress,
-disable some unwanted stuff, install bucnh of plugins I use regurarily
+Disable some unwanted stuff, install bucnh of plugins and resert the Wo to a normal working state.
+
+Make it more CMS like not blog like auto-disable all comments. Install CMS usefull plugins such as Timber, ACF, posts 2 post, wp-pagnavi, simple image sizes, w3tc, wordfence, etc.
 
 Requirments:
 - SSH
@@ -38,4 +40,4 @@ echo -e "site\nlocalhost\n2046\n2046@2046.cz\ndbuser\ndb\npass\nwp_\n0\nContact\
 (Among others, the script deletes WP themes and loads the <a href="https://github.com/twentyfortysix/almond-milk">Almond milk</a> Timber template starter)
 
 
-Done. I mean - Let go work now.
+Done. I mean - Lets go work now.

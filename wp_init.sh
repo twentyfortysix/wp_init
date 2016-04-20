@@ -150,6 +150,18 @@ wp post list --format=ids | xargs wp post update --comment_status=closed
 #disable pings
 wp post list --format=ids | xargs wp post update --ping_status=closed
 
+#disallow pingback
+wp option update default_pingback_flag 0
+
+#anyone can't post comment
+wp option update comments_notify 0
+
+#ping back status
+wp option update  default_ping_status closed
+
+#trun off comments
+wp option update default_comment_status closed
+
 # delete akismet and hello dolly
 wp plugin delete akismet
 wp plugin delete hello
@@ -191,7 +203,7 @@ wp theme delete twentyfourteen
 clear
 
 # create a navigation bar
-wp menu create "Top menu"
+wp menu create "top_menu"
 
 # add pages to navigation
 export IFS=" "
