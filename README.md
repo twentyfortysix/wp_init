@@ -5,7 +5,6 @@ Requirments:
 - SSH
 - PHP 5.6 (wp-cli is not compatible with PHP 7 just yet)
 - WP-CLI
-- Git
 - (MySQL Database ready)
 
 In terminal run:
@@ -28,6 +27,12 @@ respond to questions:
 - Run Install? (y/n)
 
 (If you wanna know what plugins are installed on the way, check the script)
+
+Tired of answering questions one by one?
+(send them straight each answer is wrapped by \n)
+```
+echo -e "site\nlocalhost\n2046\n2046@2046.cz\ndbuser\ndb\npass\nwp_\n0\nContact\n1\ny" | ./wp_init.sh
+```
 
 (Among others, the script deletes WP themes and loads the <a href="https://github.com/twentyfortysix/almond-milk">Almond milk</a> Timber template starter)
 
