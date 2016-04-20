@@ -144,6 +144,13 @@ wp post list --format=ids | xargs wp post update --ping_status=closed
 wp plugin delete akismet
 wp plugin delete hello
 
+#delete themes
+wp theme delete twentyfifteen
+wp theme delete twentysixteen
+wp theme delete twentyfourteen
+
+#install theme
+wp theme install http://2046.cz/freestuff/Almod-milk.zip
 
 # install plugins
 wp plugin install timber-library --activate
