@@ -211,6 +211,7 @@ echo "Installation is complete. Your username/password is listed below."
 echo ""
 echo "Username: $wpuser"
 echo "Password: $password"
+echo "Go to: $wpurl/wp-admin"
 echo ""
 echo "================================================================="
 
