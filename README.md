@@ -14,17 +14,18 @@ chmod +x wp_init.sh
 ./wp_init.sh
 ```
 respond to questions:
-- Site Name:
-- Site url:
-- Admin name:
-- Admin email:
-- Database User:
-- Database Name:
-- Database Password:
-- Database Prefix:
-- Discurage searchengines (0 - yes, 1 - no):
-- Add Pages:
-- Run Install? (y/n)
+ - Site Name:
+ - Site url (example.com/wp):
+ - Admin name:
+ - Admin email:
+ - Database User:
+ - Database Name:
+ - Database Password:
+ - Database Prefix:
+ - Discurage searchengines (0 - yes, 1 - no):
+ - Add Pages:
+ - DB location: Localhost - 1 or Mac os environment - 2
+ - Run Install? (y/n)
 
 (If you wanna know what plugins are installed on the way, check the script)
 
@@ -37,4 +38,4 @@ echo -e "site\nlocalhost\n2046\n2046@2046.cz\ndbuser\ndb\npass\nwp_\n0\nContact\
 (Among others, the script deletes WP themes and loads the <a href="https://github.com/twentyfortysix/almond-milk">Almond milk</a> Timber template starter)
 
 
-Done
+Done. I mean - Let go work now.
