@@ -10,8 +10,8 @@ echo "Site Name: "
 read -e sitename
 
 # accept user input for site url
-echo "Site url: "
-read -e wpurl
+# echo "Site url: "
+# read -e wpurl
 
 # accept user input for user name
 echo "Admin name: "
@@ -40,9 +40,19 @@ read -e dbprefix
 echo "Discurage searchengines (0 - yes, 1 - no): "
 read -e discourage
 
-# 
+# create pages right away
 echo "Add Pages: "
 read -e allpages
+
+# DB location.. on macs the localhost has to be 127.0.0.1
+echo "DB location: Localhost - 1 or Mac os environment - 2"
+read -e environment
+if [environment == 1]
+then
+	dhost = "localhost"
+else
+	dhost = "127.0.0.1"
+fi
 
 # add a simple yes/no confirmation before we proceed
 echo "Run Install? (y/n)"
@@ -61,7 +71,7 @@ wp core download
 
 
 # create the wp-config file with our standard setup
-wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --locale=en_US --dbprefix=$dbprefix --dbhost=127.0.0.1 --extra-php <<PHP
+wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --locale=en_US --dbprefix=$dbprefix --dbhost=$dhost --extra-php <<PHP
 define( 'WP_DEBUG', true );
 define( 'DISALLOW_FILE_EDIT', true );
 PHP
@@ -103,7 +113,7 @@ password=$(LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | 
 
 #install WordPress
 # wp core install --url="http://$wpurl/" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
-wp core install  --url="http://$wpurl/" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
+wp core install  --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
 
 # discourage search engines
 wp option update blog_public $discourage
@@ -144,13 +154,18 @@ wp post list --format=ids | xargs wp post update --ping_status=closed
 wp plugin delete akismet
 wp plugin delete hello
 
+#download the Amond milk forst and activate
+cd wp-content/themes/
+git clone https://github.com/twentyfortysix/almond-milk.git
+cd ../../
+wp theme activate Almond-milk
+
 #delete themes
 wp theme delete twentyfifteen
 wp theme delete twentysixteen
 wp theme delete twentyfourteen
 
 #install theme
-wp theme install https://github.com/twentyfortysix/almond-milk/archive/master.zip
 
 # install plugins
 wp plugin install timber-library --activate
