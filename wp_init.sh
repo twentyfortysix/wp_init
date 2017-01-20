@@ -187,10 +187,10 @@ wp plugin install adminimize --activate
 wp plugin install advanced-custom-fields --activate
 wp plugin install disable-wordpress-updates --activate
 wp plugin install disable-xml-rpc --activate
-wp plugin install posts-to-posts --activate
+#wp plugin install posts-to-posts --activate
 wp plugin install simple-image-sizes --activate
-wp plugin install simple-page-ordering --activate
-wp plugin install wp-pagenavi --activate
+wp plugin install simple-custom-post-order --activate
+wp plugin install clean-image-filenames --activate
 #just download plugins
 wp plugin install wp-migrate-db
 wp plugin install wordfence
