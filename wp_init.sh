@@ -191,11 +191,13 @@ wp plugin install disable-xml-rpc --activate
 wp plugin install simple-image-sizes --activate
 wp plugin install simple-custom-post-order --activate
 wp plugin install clean-image-filenames --activate
+wp plugin install intuitive-custom-post-order --activate
 #just download plugins
 wp plugin install wp-migrate-db
 wp plugin install wordfence
 wp plugin install w3-total-cache
 wp plugin install theme-test-drive
+
 
 wp theme activate Almond-milk
 
