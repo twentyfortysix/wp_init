@@ -192,6 +192,7 @@ wp plugin install simple-image-sizes --activate
 wp plugin install simple-custom-post-order --activate
 wp plugin install clean-image-filenames --activate
 wp plugin install intuitive-custom-post-order --activate
+wp plugin install paste-as-plain-text --activate
 #just download plugins
 wp plugin install wp-migrate-db
 wp plugin install wordfence
