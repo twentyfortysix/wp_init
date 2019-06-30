@@ -185,7 +185,6 @@ wp plugin install timber-library --activate
 wp plugin install codepress-admin-columns --activate
 wp plugin install adminimize --activate
 wp plugin install advanced-custom-fields --activate
-wp plugin install disable-wordpress-updates --activate
 wp plugin install disable-xml-rpc --activate
 #wp plugin install posts-to-posts --activate
 wp plugin install simple-image-sizes --activate
@@ -194,11 +193,14 @@ wp plugin install clean-image-filenames --activate
 wp plugin install intuitive-custom-post-order --activate
 wp plugin install paste-as-plain-text --activate
 wp plugin install imsanity --activate
+wp plugin install classic=editor --activate
 #just download plugins
+wp plugin install disable-wordpress-updates
 wp plugin install wp-migrate-db
 wp plugin install wordfence
 wp plugin install w3-total-cache
 wp plugin install theme-test-drive
+
 
 
 wp theme activate Almond-milk
