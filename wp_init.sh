@@ -14,11 +14,13 @@ echo "Site url (example.com/wp): "
 read -e wpurl
 
 # accept user input for user name
-echo "Admin name: "
-read -e wpuser
+# echo "Admin name: "
+# read -e wpuser
+echo "admin name"
+wpuser="2046"
 
-echo "Admin email: "
-read -e wpemail
+echo "Admin email 2046@2046.cz"
+wpemail="2046@2046.cz"
 
 # accept user input for the databse name
 echo "Database User: "
@@ -41,8 +43,8 @@ echo "Discurage searchengines (0 - yes, 1 - no): "
 read -e discourage
 
 # create pages right away
-echo "Add Pages: "
-read -e allpages
+#echo "Add Pages: "
+#read -e allpages
 
 # DB location.. on macs the localhost has to be 127.0.0.1
 echo "DB location: Localhost - 1 or Mac os environment - 2"
@@ -210,7 +212,7 @@ wp theme delete twentyfifteen
 wp theme delete twentysixteen
 wp theme delete twentyfourteen
 
-clear
+# clear
 
 # create a navigation bar
 wp menu create "top_menu"
@@ -227,7 +229,7 @@ wp menu location assign main-navigation primary
 # finally allow errors
 #perl -pi -e "s/'WP_DEBUG', false/'WP_DEBUG', true/g" wp-config.php
 
-clear
+# clear
 
 echo "================================================================="
 echo "Installation is complete. Your username/password is listed below."
