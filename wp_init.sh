@@ -195,7 +195,7 @@ wp plugin install clean-image-filenames --activate
 wp plugin install intuitive-custom-post-order --activate
 wp plugin install paste-as-plain-text --activate
 wp plugin install imsanity --activate
-wp plugin install classic=editor --activate
+wp plugin install classic-editor --activate
 #just download plugins
 wp plugin install disable-wordpress-updates
 wp plugin install wp-migrate-db
