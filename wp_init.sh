@@ -174,11 +174,7 @@ wp plugin delete hello
 
 #download the Amond milk forst and activate
 cd wp-content/themes/
-wget https://github.com/twentyfortysix/almond-milk.git
-unzip master.zip
-mv almond-milk-master/Almond-milk/ ./
-rm -R almond-milk-master/
-rm master.zip
+git clone https://github.com/twentyfortysix/almond-milk.git
 cd ../../
 
 
