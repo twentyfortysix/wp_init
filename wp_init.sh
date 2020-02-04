@@ -188,7 +188,7 @@ wp plugin install disable-xml-rpc --activate
 #wp plugin install posts-to-posts --activate
 wp plugin install simple-image-sizes --activate
 wp plugin install clean-image-filenames --activate
-wp plugin install intuitive-custom-post-order --activate
+wp plugin install simple-custom-post-order --activate
 wp plugin install paste-as-plain-text --activate
 wp plugin install imsanity --activate
 wp plugin install classic-editor --activate
