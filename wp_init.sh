@@ -197,6 +197,9 @@ wp plugin install wp-migrate-db
 wp plugin install wordfence
 wp plugin install w3-total-cache
 wp plugin install theme-test-drive
+wp plugin install debug-bar --activate
+wp plugin install debug-bar-timber --activate
+
 
 
 
