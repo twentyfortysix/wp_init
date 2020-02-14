@@ -167,6 +167,7 @@ wp option update  default_ping_status closed
 
 #trun off comments
 wp option update default_comment_status closed
+wp option update comment_moderation 1
 
 # delete akismet and hello dolly
 wp plugin delete akismet
