@@ -204,7 +204,7 @@ wp plugin install debug-bar-timber --activate
 
 
 
-wp theme activate Almond-milk
+wp theme activate almond-milk
 
 #delete themes
 wp theme delete twentyfifteen
