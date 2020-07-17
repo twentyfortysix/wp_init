@@ -184,7 +184,7 @@ wp plugin install timber-library --activate
 wp plugin install codepress-admin-columns --activate
 wp plugin install adminimize --activate
 # wp plugin install advanced-custom-fields --activate
-wp lugin install wp-smushit --activate
+wp plugin install wp-smushit --activate
 wp plugin install disable-xml-rpc --activate
 #wp plugin install posts-to-posts --activate
 wp plugin install simple-image-sizes --activate
