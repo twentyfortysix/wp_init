@@ -159,9 +159,6 @@ wp option update default_pingback_flag 0
 #anyone can't post comment
 wp option update comments_notify 0
 
-#disable comments by default
-wp option default_comment_status closed
-
 #ping back status
 wp option update  default_ping_status closed
 
