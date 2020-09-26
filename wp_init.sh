@@ -179,6 +179,8 @@ cd ../../
 
 # install plugins
 wp plugin install timber-library --activate
+wp plugin install advanced-access-manager
+wp plugin install post-type-switcher
 wp plugin install codepress-admin-columns --activate
 wp plugin install adminimize --activate
 # wp plugin install advanced-custom-fields --activate
