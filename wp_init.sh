@@ -171,6 +171,9 @@ wp option update comment_moderation 1
 wp plugin delete akismet
 wp plugin delete hello
 
+#delete all default themes
+wp theme delete --all --force 
+
 #download the Amond milk forst and activate
 cd wp-content/themes/
 git clone https://github.com/twentyfortysix/almond-milk.git
