@@ -61,8 +61,6 @@ echo "Run Install? (y/n)"
 read -e run
 
 
-
-
 # if the user didn't say no, then go ahead an install
 if [ "$run" == n ] ; then
 exit
@@ -71,41 +69,11 @@ else
 # download the WordPress core files
 wp core download
 
-
 # create the wp-config file with our standard setup
 wp core config --dbname=$dbname --dbuser=$dbuser --dbpass=$dbpass --locale=en_US --dbprefix=$dbprefix --dbhost=$dhost --extra-php <<PHP
 define( 'WP_DEBUG', true );
 define( 'DISALLOW_FILE_EDIT', true );
 PHP
-
-
-# START hand job
-#move the sample to real
-# mv wp-config-sample.php wp-config.php
-
-# #set database details with perl find and replace
-# perl -pi -e "s/database_name_here/$dbname/g" wp-config.php
-# perl -pi -e "s/username_here/$dbuser/g" wp-config.php
-# perl -pi -e "s/password_here/$dbpass/g" wp-config.php
-# perl -pi -e "s/wp_/$dbprefix/g" wp-config.php
-# perl -pi -e "s/localhost/127.0.0.1/g" wp-config.php
-
-
-
-# #set WP salts
-# perl -i -pe'
-#   BEGIN {
-#     @chars = ("a" .. "z", "A" .. "Z", 0 .. 9);
-#     push @chars, split //, "!@#$%^&*()-_ []{}<>~\`+=,.;:/?|";
-#     sub salt { join "", map $chars[ rand @chars ], 1 .. 64 }
-#   }
-#   s/put your unique phrase here/salt()/ge
-# ' wp-config.php
-
-# END - hand job
-
-# parse the current directory name
-#currentdirectory=${PWD##*/}
 
 # generate random 12 character password
 password=$(LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | head -c 12)
@@ -114,7 +82,6 @@ password=$(LC_CTYPE=C tr -dc A-Za-z0-9_\!\@\#\$\%\^\&\*\(\)-+= < /dev/urandom | 
 # wp db create
 
 #install WordPress
-# wp core install --url="http://$wpurl/" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
 wp core install  --url="http://$wpurl/" --title="$sitename" --admin_user="$wpuser" --admin_password="$password" --admin_email="$wpemail"
 
 # discourage search engines
@@ -174,7 +141,7 @@ wp plugin delete hello
 #delete all default themes
 wp theme delete --all --force 
 
-#download the Amond milk forst and activate
+#download the Amond milk first and activate
 cd wp-content/themes/
 git clone https://github.com/twentyfortysix/almond-milk.git
 cd ../../
@@ -226,8 +193,6 @@ done
 # assign navigaiton to primary location
 wp menu location assign main-navigation primary
 
-# finally allow errors
-#perl -pi -e "s/'WP_DEBUG', false/'WP_DEBUG', true/g" wp-config.php
 
 # clear
 
