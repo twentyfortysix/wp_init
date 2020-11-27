@@ -215,7 +215,7 @@ wp theme delete twentyfourteen
 # clear
 
 # create a navigation bar
-wp menu create "top_menu"
+wp menu create "top_menu_"
 
 # add pages to navigation
 export IFS=" "
