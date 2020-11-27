@@ -6,7 +6,7 @@ Auto-disable all comments. Install CMS usefull plugins such as Timber, ACF, Post
 
 Requirments:
 - SSH
-- PHP 5.6 (wp-cli is not compatible with PHP 7 just yet)
+- PHP
 - WP-CLI
 - (MySQL Database ready)
 
