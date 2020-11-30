@@ -91,7 +91,7 @@ wp option update blog_public $discourage
 #wp option update posts_per_page 10
 
 # delete sample page, and create homepage
-wp post delete $(wp post list --post_type=page --posts_per_page=1 --post_status=publish --pagename="sample-page" --field=ID --format=ids)
+wp post delete $(wp post list --post_type=page --posts_per_page=10 --post_status=any --field=ID --format=ids)
 wp post create --post_type=page --post_title=Home --post_status=publish --post_author=$(wp user get $wpuser --field=ID --format=ids)
 
 # set homepage as front page
