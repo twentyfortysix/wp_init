@@ -150,11 +150,7 @@ cd ../../
 # install plugins
 wp plugin install timber-library --activate
 wp plugin install codepress-admin-columns --activate
-# wp plugin install advanced-custom-fields --activate
-#wp plugin install wp-smushit --activate
 wp plugin install disable-xml-rpc --activate
-#wp plugin install posts-to-posts --activate
-#wp plugin install simple-image-sizes --activate
 wp plugin install clean-image-filenames --activate
 wp plugin install simple-custom-post-order --activate
 wp plugin install paste-as-plain-text --activate
@@ -166,9 +162,8 @@ wp plugin install post-type-switcher
 wp plugin install wp-migrate-db
 wp plugin install wordfence
 wp plugin install w3-total-cache
+wp plugin install litespeed
 wp plugin install theme-test-drive
-wp plugin install debug-bar 
-wp plugin install debug-bar-timber
 
 
 wp theme activate almond-milk
