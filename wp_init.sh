@@ -148,7 +148,7 @@ cd ../../
 
 
 # install plugins
-wp plugin install timber-library --activate
+# wp plugin install timber-library --activate
 wp plugin install codepress-admin-columns --activate
 wp plugin install disable-xml-rpc --activate
 wp plugin install clean-image-filenames --activate
